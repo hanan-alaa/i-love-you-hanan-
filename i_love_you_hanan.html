@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=قمر-حنان, i love you  hanan -scale=1.0">
+    <title>حرف H مضيء مع نجوم متحركة</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            overflow: hidden;
+        }
+        .letter {
+            font-size: 100px;
+            color: gray;
+            text-shadow: 
+                0 0 5px rgba(255, 255, 255, 0.5), 
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 15px rgba(255, 255, 255, 0.5);
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 0, 0, 0.5) 10px,
+                rgba(0, 0, 0, 0.5) 20px
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 
+                    0 0 5px rgba(255, 255, 255, 0.5), 
+                    0 0 10px rgba(255, 255, 255, 0.5),
+                    0 0 15px rgba(255, 255, 255, 0.5);
+            }
+            100% {
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 1), 
+                    0 0 30px rgba(255, 255, 255, 1),
+                    0 0 40px rgba(255, 255, 255, 1);
+            }
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 1s infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.5); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter">H</div>
+    <script>
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 5 + 2; // حجم النجوم
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.top = `${Math.random() * window.innerHeight}px`;
+            star.style.left = `${Math.random() * window.innerWidth}px`;
+            document.body.appendChild(star);
+        }
+    </script>
+</body>
+</html>
